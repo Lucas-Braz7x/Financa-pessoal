@@ -82,6 +82,12 @@ function cadastrarDespesas(){
   if(despesa.validarDados()){
     bancoDados.gravar(despesa);
     $('#sucessoGravacao').modal('show');
+    ano.value = '';
+    mes.value = '';
+    dia .value = '';
+    tipo.value = '';
+    descricao.value = '';
+    valor.value = '';
   }else{
     $('#erroGravacao').modal('show');
   }
@@ -92,5 +98,29 @@ function carregaDespesas(){
   let despesas = Array();
 
   despesas = bancoDados.recuperarRegistros();
-  console.log(despesas);
+
+  let listaDespesas = document.getElementById('listaDespesas');
+  despesas.forEach(d =>{
+    //Criando linhas e colunas na table 
+    let linha = listaDespesas.insertRow();
+    linha.insertCell(0).innerHTML = `${d.dia}/0${d.mes}/${d.ano}`;
+    switch(parseInt(d.tipo)){
+      case 1: d.tipo = 'Alimentação'
+        break;
+      case 2: d.tipo = 'Educação'
+        break;
+      case 3: d.tipo = 'Lazer'
+        break;
+      case 4: d.tipo = 'Saúde'
+        break;
+      case 5: d.tipo = 'Transporte'
+        break;
+    }
+    linha.insertCell(1).innerHTML = d.tipo;
+
+    linha.insertCell(2).innerHTML = d.descricao;
+    linha.insertCell(3).innerHTML = d.valor;
+    
+  })
+  
 }
