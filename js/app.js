@@ -57,6 +57,31 @@ class BancoDados{
     }
     return despesas;
   }
+  pesquisar(despesa){
+    let despesasFiltradas = [];
+    despesasFiltradas = this.recuperarRegistros();
+    
+    //Filtros
+    if(despesa.ano != ''){
+      despesasFiltradas = despesasFiltradas.filter( d => d.ano == despesa.ano);
+    }
+    if(despesa.mes != ''){
+      despesasFiltradas = despesasFiltradas.filter( d => d.mes == despesa.mes);
+    }
+    if(despesa.dia != ''){
+      despesasFiltradas = despesasFiltradas.filter( d => d.dia == despesa.dia);
+    }
+    if(despesa.tipo != ''){
+      despesasFiltradas = despesasFiltradas.filter( d => d.tipo == despesa.tipo);
+    }
+    if(despesa.descricao != ''){
+      despesasFiltradas = despesasFiltradas.filter( d => d.descricao == despesa.descricao);
+    }
+    if(despesa.valor != ''){
+      despesasFiltradas = despesasFiltradas.filter( d => d.valor == despesa.valor);
+    }
+    return despesasFiltradas;
+  }
 }
 
 let bancoDados = new BancoDados();
@@ -94,16 +119,18 @@ function cadastrarDespesas(){
     
 }
 
-function carregaDespesas(){
-  let despesas = Array();
+function carregaDespesas(despesas = Array(), filtro = false){
 
-  despesas = bancoDados.recuperarRegistros();
+  if(despesas.length == 0 && filtro == false){
+    despesas = bancoDados.recuperarRegistros();
+  }
 
   let listaDespesas = document.getElementById('listaDespesas');
+  listaDespesas.innerHTML = ''
   despesas.forEach(d =>{
     //Criando linhas e colunas na table 
     let linha = listaDespesas.insertRow();
-    linha.insertCell(0).innerHTML = `${d.dia}/0${d.mes}/${d.ano}`;
+    linha.insertCell(0).innerHTML = `${d.dia}/${d.mes}/${d.ano}`;
     switch(parseInt(d.tipo)){
       case 1: d.tipo = 'Alimentação'
         break;
@@ -121,6 +148,20 @@ function carregaDespesas(){
     linha.insertCell(2).innerHTML = d.descricao;
     linha.insertCell(3).innerHTML = d.valor;
     
-  })
+  }) 
+}
+
+function pesquisarDespesas(){
+  let ano = document.getElementById('ano').value;
+  let mes = document.getElementById('mes').value;
+  let dia = document.getElementById('dia').value;
+  let tipo = document.getElementById('tipo').value;
+  let descricao = document.getElementById('descricao').value;
+  let valor = document.getElementById('valor').value;
+
+  let despesa = new Despesas(ano, mes, dia, tipo, descricao, valor);
   
+  let despesas = bancoDados.pesquisar(despesa);
+
+  this.carregaDespesas(despesas, true);
 }
