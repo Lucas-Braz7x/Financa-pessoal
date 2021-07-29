@@ -1,155 +1,220 @@
-<html>
-	<head>
-    <meta charset="utf-8" />
-		<title>Orçamento pessoal</title>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<!-- Bootstrap início -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <!-- Bootstrap fim -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!-- Font Awesome -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-	</head>
+    <!-- Estilo customizado -->
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
+    <title>Finans - finanças pessoais</title>
+  </head>
   <body>
-
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-           <img src="logo.png" width="50" height="35" alt="Orçamento pessoal">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Cadastro</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="consulta.html">Consulta</a>
-            </li>
-          </ul>
-          
-        </div>
-      </div>
-    </nav>
-
-    <div class="container">
-      <div class="row">
-        <div class="col mb-5">
-          <h1 class="display-4">Registro de nova despesa</h1>
-        </div>
-      </div>
-
-      <div class="row mb-2">
-        <div class="col-md-2">
-          <select class="form-control" id="ano">
-            <option value="">Ano</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-          </select>
-        </div>
-
-        <div class="col-md-2">
-          <select class="form-control" id="mes">
-            <option value="">Mês</option>
-            <option value="1">Janeiro</option>
-            <option value="2">Fevereiro</option>
-            <option value="3">Março</option>
-            <option value="4">Abril</option>
-            <option value="5">Maio</option>
-            <option value="6">Junho</option>
-            <option value="7">Julho</option>
-            <option value="8">Agosto</option>
-            <option value="9">Setembro</option>
-            <option value="10">Outubro</option>
-            <option value="11">Novembro</option>
-            <option value="12">Dezembro</option>
-          </select>
-        </div>
-        
-        <div class="col-md-2">
-          <input type="number" class="form-control" placeholder="Dia" id="dia" />
-        </div>
-
-        <div class="col-md-6">
-          <select class="form-control" id="tipo">
-            <option value="">Tipo</option>
-            <option value="1">Alimentação</option>
-            <option value="2">Educação</option>
-            <option value="3">Lazer</option>
-            <option value="4">Saúde</option>
-            <option value="5">Transporte</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-8">
-          <input type="text" class="form-control" placeholder="Descrição" id="descricao" />
-        </div>
-
-        <div class="col-md-2">
-          <input type="number" class="form-control" placeholder="Valor" id="valor" required/>
-        </div>
-
-        <div class="col-md-2 d-flex justify-content-end">
-          <button type="button" class="btn btn-primary" onclick="cadastrarDespesas()">
-            <i class="fas fa-plus"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="modalRegistroDespesa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-danger">
-            <h5 class="modal-title" id="exampleModalLabel">Erro na gravação</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" id="modal_conteudo">
-            Existem campos obrigatórios que não foram preenchidos
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Voltar e corrigir</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="sucessoGravacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-success">
-            <h5 class="modal-title" id="exampleModalLabel">Registro inserido com sucesso</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" id="modal_conteudo">
-            Despesa foi cadastrada com sucesso 
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Voltar</button>
-          </div>
-        </div>
-      </div>
-    </div>
     
-  </body>	
+    <header><!-- inicio Cabecalho -->
+      <nav class="navbar navbar-expand-sm navbar-light bg-success">
+        <div class="container">
+          
+          <a href="#" class="navbar-brand">
+            <img src="images/logo.png" width="60">
+          </a>
 
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="nav-principal">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a href="" class="nav-link">Home</a>
+              </li>
+		   <li class="nav-item">
+                <a href="views/cadastroDespesas.html" class="nav-link">Despesas</a>
+              </li>
+              <li class="nav-item">
+                <a href="views/consulta.html" class="nav-link">Consultas</a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">Benefícios</a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">Preços</a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="btn btn-outline-light ml-4">Entrar</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </nav>
+    </header><!--/fim Cabecalho -->
+
+    <section id="home"class='bg-success text-white'><!-- Início seção home -->
+      <div class="container ">
+        <div class="row">
+          <div class="col-md-6 d-flex"><!-- Textos da seção -->
+            <div class="align-self-center">
+              <h1 class="display-4">Suas contas, descomplicadas</h1>
+              <p>
+Finans é uma ferramenta online que vai facilitar sua vida financeira.
+              </p>
+
+              <form class="mt-4 mb-4">
+                <div class="input-group input-group-lg">
+                  <input id="email" type="text" placeholder="Seu e-mail" class="form-control">
+                  <div class="input-group-append">
+                    <button onclick="salvarEmail()" type="button" class="btn btn-primary">Cadastre-se</button>
+                  </div>
+                </div>
+              </form>
+
+              <p>Disponível para
+                <a href="" class="btn btn-outline-light">
+                  <i class="fab fa-android fa-lg"></i>
+                </a>
+                <a href="" class="btn btn-outline-light">
+                  <i class="fab fa-apple"></i>
+                </a>
+              </p>
+
+            </div>
+          </div><!--/fim textos da seção -->
+          <div class="col-md-6 d-none d-md-block">
+            <img src="images/capa-mulher.png">
+          </div>
+        </div>
+      </div>
+    </section><!--/fim seção home -->
+
+	<section class="caixa"><!--Inicio do saiba mais -->
+		<div class='container'>
+			<div class="row">
+				<div class="col-md-6 d-flex">
+					<div class='align-self-center'>
+						<h2>Saiba onde est� o seu dinheiro</h2>
+						<p>Classifique todos as suas despesas, com esses dados voc� sabe de onde vem e para onde vai o seu dinheiro</p>
+						<a href="" class="btn btn-primary">Veja mais</a>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<img src="images/saiba.png" class="img-fluid">
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="caixa"><!--Inicio do juros -->
+		<div class='container'>
+			<div class="row">
+				<div class="col-md-6">
+					<img src="images/juros.png" class="img-fluid">
+				</div>
+				<div class="col-md-6 d-flex">
+					<div class='align-self-center'>
+						<h2>Lorem Ipsum is simply dummy text</h2>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
+						<a href="" class="btn btn-primary">Veja mais</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="caixa"><!--Inicio do Conte�dos -->
+		<div class='container'>
+			<div class="row">
+				<div class="col-md-4">
+					<img src="images/facil.png" class="img-fluid">
+					<h4>Lorem Ipsum is simply dummy text</h4>
+					<p>
+						Lorem Ipsum is simply dummy text of the printing and typesetting. Lorem Ipsum is simply dummy text of the printing and typesetting.Lorem Ipsum is simply dummy text of the printing and typesetting
+					</p>
+				</div>
+				<div class="col-md-4">
+					<img src="images/economize.png" class="img-fluid">
+					<h4>Lorem Ipsum is simply dummy text</h4>
+					<p>
+						Lorem Ipsum is simply dummy text of the printing and typesetting. Lorem Ipsum is simply dummy text of the printing and typesetting.Lorem Ipsum is simply dummy text of the printing and typesetting
+					</p>
+				</div>
+				<div class="col-md-4">
+					<img src="images/suporte.png" class="img-fluid">
+					<h4>Lorem Ipsum is simply dummy text</h4>
+					<p>
+						Lorem Ipsum is simply dummy text of the printing and typesetting. Lorem Ipsum is simply dummy text of the printing and typesetting.Lorem Ipsum is simply dummy text of the printing and typesetting
+					</p>
+				</div>				
+			</div>
+		</div>
+	</section>
+
+	<footer class="mt-4 mb-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					
+      <nav class="navbar navbar-expand-sm navbar-light">
+        <div>
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-footer">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="nav-footer">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+              </li>
+		   <li class="nav-item">
+                <a href="views/cadastroDespesas.html" class="nav-link">Despesas</a>
+              </li>
+              <li class="nav-item">
+                <a href="views/consulta.html" class="nav-link">Consultas</a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">Benefícios</a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">Preços</a>
+              </li>
+              <li class="nav-item">
+                <a href="views/login.html" class="btn btn-outline-light ml-4">Entrar</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </nav>
+				</div>
+				<div class="col-md-4 d-flex justify-content-end align-items-center">
+					<a href="" class="btn btn-outline-dark ml-2">
+						<i class="fab fa-facebook "></i>
+					</a>
+					<a href="" class="btn btn-outline-dark ml-2">
+						<i class="fab fa-linkedin"></i>
+					</a>
+					<a href="https://github.com/Lucas-Braz7x" class="btn btn-outline-dark ml-2">
+						<i class="fab fa-github-square"></i>
+					</a>
+					<a href="" class="btn btn-outline-dark ml-2">
+						<i class="fab fa-instagram"></i>
+					</a>				
+					
+				</div>
+			</div>
+		</div>
+	<footer>
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
 </html>
