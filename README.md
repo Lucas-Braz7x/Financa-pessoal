@@ -1,9 +1,4 @@
 
-# Desafio #2 do Hiring Coders 2 - Criar uma página de cadastro de clientes e exibição de produtos
-- Os dados de clientes, endereços e produtos devem estar devidamente estruturados
-- Dados no localstorage
-- Código fonte no github com o arquivo README detalhando as funcionalidades da programação
-
 # Finança pessoal
  - Aplicação desenvolvida no curso de desenvolvimento web. Consiste em um site de cadastro de despesas e consultas das mesmas, os dados ficam armazenados no localStorage. O site foi construído 95% com Bootstrap para treinar.
 
