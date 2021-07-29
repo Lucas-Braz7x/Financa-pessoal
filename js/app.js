@@ -184,3 +184,9 @@ function pesquisarDespesas(){
 
   this.carregaDespesas(despesas, true);
 }
+
+function salvarEmail(){
+	let email = document.getElementById('email').value;
+	localStorage.setItem('email', email);
+	alert(`email cadastrado: ${	email}`);
+}
