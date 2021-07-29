@@ -1,0 +1,30 @@
+.form{
+  background-image: linear-gradient(120deg, #7ead10 0%, #81e78f 100%);
+  box-shadow: 0 0 20px grey;
+  border-radius: 25px;
+  transition: transform 5s;
+}
+
+.form:hover{
+  transform: scale(1.1);
+}
+
+a , a:hover{
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+
+  color: red;
+  transition: 2s;
+}
+
+a:hover{
+  color: #fff;
+  
+}
+.image{
+  transition: transform 5s;
+}
+.form:hover .image:hover{
+  transform: rotateY(360deg);
+}
